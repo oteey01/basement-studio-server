@@ -4,7 +4,7 @@ import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const allowedOrigins = ["http://localhost:3001","http://localhost:3000", "https://basement-studio-client.vercel.app/"]
+  const allowedOrigins = ["http://localhost:3001","http://localhost:3000", "https://basement-studios.vercel.app"]
   const port = process.env.PORT || 3001;
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
