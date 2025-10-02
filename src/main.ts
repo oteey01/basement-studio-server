@@ -5,7 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   const allowedOrigins = ["http://localhost:3001","http://localhost:3000", "https://basement-studios.vercel.app"]
-  const port = process.env.PORT || 3001;
+  const port = process.env.PORT || 3000;
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
    app.useStaticAssets(join(__dirname, '..', 'uploads'), {
@@ -28,7 +28,7 @@ async function bootstrap() {
     allowedHeaders: ["Content-Type", "Authorization"],
   });
 
-   await app.init(); // don’t use app.listen()
-  // await app.listen(port);
+  //  await app.init(); // don’t use app.listen()
+  await app.listen(port);
 }
 bootstrap();
