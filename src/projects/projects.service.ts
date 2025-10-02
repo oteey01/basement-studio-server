@@ -29,8 +29,13 @@ export class ProjectsService {
   // }
 
   async update(id: string, updateProjectDto: UpdateProjectDto, file: Express.Multer.File) {
-      const updatedProject = await this.projectModel.findByIdAndUpdate(id, {...updateProjectDto, fileName: file ? file.filename : null,
-      filePath: file ? `/uploads/${file.filename}` : null,})
+      let projectData = {...updateProjectDto}
+
+      if (file) {
+        projectData = {...projectData, fileName: file.filename ,
+      filePath: `/uploads/${file.filename}` }
+      }
+      const updatedProject = await this.projectModel.findByIdAndUpdate(id, projectData)
       return updatedProject
     }
   

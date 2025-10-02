@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
-const allowedOrigins = ["http://localhost:3001","http://localhost:3000",]
+const allowedOrigins = ["http://localhost:3001","http://localhost:3000", "https://basement-studio-client.vercel.app/"]
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

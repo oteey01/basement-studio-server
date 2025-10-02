@@ -34,8 +34,13 @@ export class EmployeesService {
 
   async update(id: string, updateEmployeeDto: UpdateEmployeeDto, file: Express.Multer.File) {
     const _id = new mongoose.Types.ObjectId(id)
-    const updatedEmployee = await this.employeeModel.findByIdAndUpdate(_id, {...updateEmployeeDto, fileName: file ? file.filename : null,
-      filePath: file ? `/uploads/${file.filename}` : null,}).exec()
+    let employeeData = {...updateEmployeeDto}
+
+      if (file) {
+        employeeData = {...employeeData, fileName: file.filename ,
+      filePath: `/uploads/${file.filename}` }
+      }
+    const updatedEmployee = await this.employeeModel.findByIdAndUpdate(_id, employeeData).exec()
     return updatedEmployee
   }
 
