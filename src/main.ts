@@ -4,7 +4,7 @@ import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 const allowedOrigins = ["http://localhost:3001","http://localhost:3000", "https://basement-studio-client.vercel.app/"]
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
    app.useStaticAssets(join(__dirname, '..', 'uploads'), {
