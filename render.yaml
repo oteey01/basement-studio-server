@@ -3,6 +3,6 @@ services:
     name: my-nest-app
     env: node
     plan: free
-    buildCommand: npm install && npm run build
+    # buildCommand: npm install && npm run build
     startCommand: npm run start
     autoDeploy: true
